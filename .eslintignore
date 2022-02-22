@@ -1,0 +1,14 @@
+*.sh
+node_modules
+lib
+*.md
+*.woff
+*.ttf
+.vscode
+.idea
+/dist/
+/public
+/docs
+.vscode
+.local
+package.json
