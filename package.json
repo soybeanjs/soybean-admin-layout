@@ -1,6 +1,6 @@
 {
   "name": "soybean-admin-layout",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "a layout of admin template, support vue2 and vue3",
   "private": false,
   "main": "./dist/index.umd.js",
@@ -55,6 +55,7 @@
       "optional": true
     }
   },
+	"files": ["dist"],
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
