@@ -1,4 +1,5 @@
-# Vite-TS-Vue3-Starter
+# admin-layout
 
-This template is based on the template created by @vitejs/app, which add eslint、prettier、commitlint to format code.
+this is an admin layout component.
 
+example: [soybean-admin](https://soybean.pro)
