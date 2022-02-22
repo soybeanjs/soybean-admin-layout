@@ -24,11 +24,22 @@ pnpm install soybean-admin-layout
 
 ## usage
 
-```vue
+#### in single vue file
+
+```typescript
 import SoybeanAdminLayout from 'soybean-admin-layout';
-import 'soybean-admin-layout/style.css';
+import 'soybean-admin-layout/dist/style.css';
 ```
 
+#### global install
 
+```typescript
+import { createApp } from 'vue';
+import SoybeanAdminLayout from 'soybean-admin-layout';
+import 'soybean-admin-layout/dist/style.css';
+
+const app = createApp();
+app.use(SoybeanAdminLayout);
+```
 
 example: [soybean-admin](https://soybean.pro)

@@ -1,6 +1,6 @@
 {
   "name": "soybean-admin-layout",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a layout of admin template, support vue2 and vue3",
   "private": false,
   "main": "./dist/index.umd.js",
