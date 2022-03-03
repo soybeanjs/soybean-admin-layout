@@ -1,7 +1,7 @@
 {
   "name": "soybean-admin-layout",
   "version": "1.0.3",
-  "description": "a layout of admin template, support vue2 and vue3",
+  "description": "a layout component of admin template, support vue2 and vue3",
   "private": false,
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/honghuangdc/admin-layout.git"
+    "url": "git+https://github.com/honghuangdc/soybean-admin-layout.git"
   },
   "keywords": [
     "admin",
@@ -36,9 +36,9 @@
   "author": "Soybean (honghuangdc@gmail.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/honghuangdc/admin-layout/issues"
+    "url": "https://github.com/honghuangdc/soybean-admin-layout/issues"
   },
-  "homepage": "https://github.com/honghuangdc/admin-layout#readme",
+  "homepage": "https://github.com/honghuangdc/soybean-admin-layout#readme",
   "dependencies": {
     "vue-demi": "^0.12.1"
   },
