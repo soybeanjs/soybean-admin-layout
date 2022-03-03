@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue-demi';
+import { useCssRender } from '@/hooks';
 
 interface Props {
   /** 开启fixed布局 */
@@ -34,19 +35,22 @@ const props = withDefaults(defineProps<Props>(), {
   transitionTimingFunction: 'ease-in-out'
 });
 
+const { cssRender } = useCssRender();
+
 const style = computed(() => {
   const { fixed, zIndex, minWidth, height, paddingLeft, transitionDuration, transitionTimingFunction } = props;
   const position = fixed ? 'fixed' : 'static';
   return `position: ${position};z-index: ${zIndex};min-width: ${minWidth}px;height: ${height}px;padding-left: ${paddingLeft}px;transition-duration: ${transitionDuration}ms;transition-timing-function: ${transitionTimingFunction};`;
 });
+
+// css
+cssRender('.soybean-admin-layout__header', {
+  left: 0,
+  top: 0,
+  flexShrink: 0,
+  boxSizing: 'border-box',
+  width: '100%',
+  transitionProperty: 'padding-left'
+});
 </script>
-<style>
-.soybean-admin-layout__header {
-  left: 0;
-  top: 0;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  width: 100%;
-  transition-property: padding-left;
-}
-</style>
+<style></style>

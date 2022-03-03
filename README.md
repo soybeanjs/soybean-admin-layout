@@ -28,7 +28,6 @@ pnpm install soybean-admin-layout
 
 ```typescript
 import SoybeanAdminLayout from 'soybean-admin-layout';
-import 'soybean-admin-layout/dist/style.css';
 ```
 
 #### global install
@@ -36,7 +35,6 @@ import 'soybean-admin-layout/dist/style.css';
 ```typescript
 import { createApp } from 'vue';
 import SoybeanAdminLayout from 'soybean-admin-layout';
-import 'soybean-admin-layout/dist/style.css';
 
 const app = createApp();
 app.use(SoybeanAdminLayout);

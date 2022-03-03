@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue-demi';
+import { useCssRender } from '@/hooks';
 
 interface Props {
   /** 顶部内边距 */
@@ -28,16 +29,19 @@ const props = withDefaults(defineProps<Props>(), {
   transitionTimingFunction: 'ease-in-out'
 });
 
+const { cssRender } = useCssRender();
+
 const style = computed(() => {
   const { paddingTop, paddingBottom, paddingLeft, transitionDuration, transitionTimingFunction } = props;
   return `padding-top: ${paddingTop}px;padding-bottom: ${paddingBottom}px;padding-left: ${paddingLeft}px;transition-duration: ${transitionDuration}ms;transition-timing-function: ${transitionTimingFunction};`;
 });
+
+// css
+cssRender('.soybean-admin-layout__main', {
+  flexGrow: 1,
+  boxSizing: 'border-box',
+  width: '100%',
+  transitionProperty: 'padding-left'
+});
 </script>
-<style>
-.soybean-admin-layout__main {
-  flex-grow: 1;
-  box-sizing: border-box;
-  width: 100%;
-  transition-property: padding-left;
-}
-</style>
+<style></style>

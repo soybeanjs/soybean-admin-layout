@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { computed } from 'vue-demi';
 import { LayoutHeader, LayoutTab, LayoutSider, LayoutContent, LayoutFooter } from './components';
-import { useFixedTransformStyle } from './hooks';
+import { useCssRender, useFixedTransformStyle } from './hooks';
 
 interface Props {
   /** 布局模式 */
@@ -93,7 +93,7 @@ interface Props {
   siderCollapse?: boolean;
   /** 动画过渡时间 */
   transitionDuration?: number;
-  /** 动画过渡时间 */
+  /** 动画过渡速度曲线 */
   transitionTimingFunction?: string;
 }
 
@@ -115,6 +115,8 @@ const props = withDefaults(defineProps<Props>(), {
   transitionDuration: 300,
   transitionTimingFunction: 'ease-in-out'
 });
+
+const { cssRender } = useCssRender();
 
 // fixed布局时，应用translateX样式(水平方向出现滚动条，拖动滚动条时，fixed元素跟着滚动)
 const hasFixedEl = computed(() => props.fixedHeaderAndTab || props.fixedFooter);
@@ -163,12 +165,13 @@ const contentPaddingTop = computed(() => {
   return height;
 });
 const contentPaddingBottom = computed(() => (props.fixedFooter && props.footerVisible ? props.footerHeight : 0));
+
+// css
+cssRender('.soybean-admin-layout', {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  height: '100%'
+});
 </script>
-<style>
-.soybean-admin-layout {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-</style>
+<style></style>

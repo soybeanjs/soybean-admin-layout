@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue-demi';
+import { useCssRender } from '@/hooks';
 
 interface Props {
   /** fixed布局的层级 */
@@ -28,18 +29,22 @@ const props = withDefaults(defineProps<Props>(), {
   transitionTimingFunction: 'ease-in-out'
 });
 
+const { cssRender } = useCssRender();
+
 const style = computed(() => {
   const { zIndex, width, paddingTop, transitionDuration, transitionTimingFunction } = props;
   return `z-index: ${zIndex};width: ${width}px;padding-top: ${paddingTop}px;transition-duration: ${transitionDuration}ms;transition-timing-function: ${transitionTimingFunction};`;
 });
+
+// css
+cssRender('.soybean-admin-layout__sider', {
+  position: 'fixed',
+  left: 0,
+  top: 0,
+  boxSizing: 'border-box',
+  width: '100%',
+  height: '100%',
+  transitionProperty: 'all'
+});
 </script>
-<style>
-.soybean-admin-layout__sider {
-  position: fixed;
-  left: 0;
-  top: 0;
-  box-sizing: border-box;
-  height: 100%;
-  transition-property: all;
-}
-</style>
+<style></style>

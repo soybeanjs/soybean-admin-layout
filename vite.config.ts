@@ -2,6 +2,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
+import windicss from 'vite-plugin-windicss';
 
 export default defineConfig({
   resolve: {
@@ -11,6 +12,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    windicss(),
     dts({
       include: ['./src/index.ts', './src/index.vue'],
       beforeWriteFile(filePath, content) {
@@ -27,7 +29,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
-      name: 'AdminLayout',
+      name: 'SoybeanAdminLayout',
       fileName: 'index'
     },
     rollupOptions: {
