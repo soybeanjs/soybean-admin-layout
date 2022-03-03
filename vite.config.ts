@@ -19,7 +19,7 @@ export default defineConfig(configEnv => {
       vue(),
       windicss(),
       dts({
-        include: ['./src/index.ts', './src/index.vue'],
+        include: ['./src/index.ts', './src/index.vue', './src/volar.d.ts'],
         beforeWriteFile(filePath, content) {
           return {
             filePath: filePath.replace('/dist/src/', '/dist/'),
@@ -32,7 +32,9 @@ export default defineConfig(configEnv => {
       exclude: ['vue-demi']
     },
     build: isVercel
-      ? {}
+      ? {
+          brotliSize: false
+        }
       : {
           lib: {
             entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
