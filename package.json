@@ -10,7 +10,7 @@
     "dev": "vite",
     "typecheck": "vue-tsc",
     "build": "npm run typecheck && vite build",
-		"build:vercel": "cross-env VITE_IS_VERCEL=1 vite build",
+    "build:vercel": "cross-env VITE_IS_VERCEL=1 vite build",
     "preview": "vite preview",
     "lint": "eslint --fix ./ --ext .vue,.js,jsx,.ts,tsx",
     "prepare": "husky install"
@@ -69,6 +69,7 @@
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
     "commitizen": "^4.2.4",
+    "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
     "eslint": "^8.10.0",
