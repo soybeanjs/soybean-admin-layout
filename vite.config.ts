@@ -19,7 +19,7 @@ export default defineConfig(configEnv => {
       vue(),
       unocss({ include: ['src/App.vue'] }),
       dts({
-        include: ['./src/index.ts', './src/ButtonTab.vue', './src/ChromeTab.vue'],
+        include: ['./src/index.ts', './src/index.vue'],
         beforeWriteFile(filePath, content) {
           return {
             filePath: filePath.replace('/dist/src/', '/dist/'),
