@@ -20,7 +20,7 @@
       :min-width="minWidth"
       :top="headerHeight"
       :height="tabHeight"
-      :padding-left="siderWidth"
+      :padding-left="currentSiderWidth"
       :style="headerAndTabTransform"
     >
       <slot name="tab"></slot>
@@ -29,7 +29,7 @@
       v-if="siderVisible"
       v-bind="commonProps"
       :z-index="siderZIndex"
-      :width="siderWidth"
+      :width="currentSiderWidth"
       :padding-top="siderPaddingTop"
     >
       <slot name="sider"></slot>
@@ -38,7 +38,7 @@
       v-bind="commonProps"
       :padding-top="contentPaddingTop"
       :padding-bottom="contentPaddingBottom"
-      :padding-left="siderWidth"
+      :padding-left="currentSiderWidth"
     >
       <slot></slot>
     </layout-content>
@@ -49,7 +49,7 @@
       :z-index="footerZIndex"
       :min-width="minWidth"
       :height="footerHeight"
-      :padding-left="siderWidth"
+      :padding-left="currentSiderWidth"
       :style="footerTransform"
     >
       <slot name="footer"></slot>
@@ -143,14 +143,14 @@ const siderZIndex = computed(() => (isVertical.value ? 1002 : 1000));
 const footerZIndex = 999;
 
 /** 侧边宽度 */
-const siderWidth = computed(() => {
+const currentSiderWidth = computed(() => {
   const { siderCollapse, siderWidth, siderCollapsedWidth } = props;
   const width = siderCollapse ? siderCollapsedWidth : siderWidth;
   return props.siderVisible ? width : 0;
 });
 
 // 各子组件的属性
-const headerPaddingLeft = computed(() => (isVertical.value ? siderWidth.value : 0));
+const headerPaddingLeft = computed(() => (isVertical.value ? currentSiderWidth.value : 0));
 const siderPaddingTop = computed(() => (!isVertical.value && props.headerVisible ? props.headerHeight : 0));
 const contentPaddingTop = computed(() => {
   let height = 0;

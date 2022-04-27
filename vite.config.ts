@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
-import windicss from 'vite-plugin-windicss';
+import unocss from 'unocss/vite';
 
 export default defineConfig(configEnv => {
   const viteEnv = loadEnv(configEnv.mode, `.env.${configEnv.mode}`);
@@ -17,9 +17,9 @@ export default defineConfig(configEnv => {
     },
     plugins: [
       vue(),
-      windicss(),
+      unocss({ include: ['src/App.vue'] }),
       dts({
-        include: ['./src/index.ts', './src/index.vue', './src/volar.d.ts'],
+        include: ['./src/index.ts', './src/ButtonTab.vue', './src/ChromeTab.vue'],
         beforeWriteFile(filePath, content) {
           return {
             filePath: filePath.replace('/dist/src/', '/dist/'),

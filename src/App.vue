@@ -1,18 +1,18 @@
 <template>
-  <soybean-admin-layout
+  <admin-layout
     :mode="mode"
     :fixed-header-and-tab="fixedHeaderAndTab"
     :fixed-footer="fixedFooter"
     :sider-collapse="siderCollapse"
   >
     <template #header>
-      <div class="flex-center h-full bg-[#e6e6e6]">Header</div>
+      <div class="flex-center h-full bg-#e6e6e6">Header</div>
     </template>
     <template #tab>
-      <div class="flex-center h-full bg-[#cccccc]">Tab</div>
+      <div class="flex-center h-full bg-#cccccc">Tab</div>
     </template>
     <template #sider>
-      <div class="h-full px-12px bg-[#d9d9d9] whitespace-nowrap">
+      <div class="h-full px-12px bg-#d9d9d9 whitespace-nowrap">
         <div class="flex-center h-56px">Sider</div>
         <div>
           <h4>layout mode:</h4>
@@ -43,15 +43,15 @@
       </div>
     </template>
     <template #footer>
-      <div class="flex-center h-full bg-[#e6e6e6]">Footer</div>
+      <div class="flex-center h-full bg-#e6e6e6">Footer</div>
     </template>
     <div v-for="i in 100" :key="i" class="text-center">{{ i }}</div>
-  </soybean-admin-layout>
+  </admin-layout>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import SoybeanAdminLayout from './index.vue';
+import AdminLayout from './index.vue';
 
 type Mode = 'vertical' | 'horizontal';
 const mode = ref<Mode>('vertical');

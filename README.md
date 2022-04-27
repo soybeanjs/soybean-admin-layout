@@ -1,4 +1,4 @@
-# soybean-admin-layout
+# @soybeanjs/vue-admin-layout
 
 this is an admin layout component.
 
@@ -7,26 +7,26 @@ this is an admin layout component.
 ### npm
 
 ```bash
-npm install soybean-admin-layout
+npm install @soybeanjs/vue-admin-layout
 ```
 
 ### yarn
 
 ```bash
-yarn add soybean-admin-layout
+yarn add @soybeanjs/vue-admin-layout
 ```
 
 ### pnpm
 
 ```bash
-pnpm install soybean-admin-layout
+pnpm install @soybeanjs/vue-admin-layout
 ```
 
 ## usage
 
 ```typescript
-import SoybeanAdminLayout from 'soybean-admin-layout';
-import type { LayoutProps } from 'soybean-admin-layout';
+import AdminLayout from '@soybeanjs/vue-admin-layout';
+import type { LayoutProps } from '@soybeanjs/vue-admin-layout';
 ```
 
 Online Example: https://soybean-admin-layout.vercel.app/
