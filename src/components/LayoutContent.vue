@@ -15,6 +15,8 @@ interface Props {
   paddingBottom?: number;
   /** 左侧内边距 */
   paddingLeft?: number;
+  /** 是否禁止溢出 */
+  overflowHidden?: boolean;
   /** 动画过渡时间 */
   transitionDuration?: number;
   /** 动画过渡时间 */
@@ -33,7 +35,8 @@ const { cssRender } = useCssRender();
 
 const style = computed(() => {
   const { paddingTop, paddingBottom, paddingLeft, transitionDuration, transitionTimingFunction } = props;
-  return `padding-top: ${paddingTop}px;padding-bottom: ${paddingBottom}px;padding-left: ${paddingLeft}px;transition-duration: ${transitionDuration}ms;transition-timing-function: ${transitionTimingFunction};`;
+  const overflowStyle = `overflow: ${props.overflowHidden ? 'hidden' : 'visible'};`;
+  return `padding-top: ${paddingTop}px;padding-bottom: ${paddingBottom}px;padding-left: ${paddingLeft}px;${overflowStyle}transition-duration: ${transitionDuration}ms;transition-timing-function: ${transitionTimingFunction};`;
 });
 
 // css

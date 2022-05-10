@@ -22,6 +22,8 @@ export interface LayoutProps {
   tabHeight?: number;
   /** 固定头部和标签 */
   fixedHeaderAndTab?: boolean;
+  /** 给主体添加禁止溢出 */
+  addMainOverflowHidden?: boolean;
   /** 底部可见 */
   footerVisible?: boolean;
   /** 底部高度 */

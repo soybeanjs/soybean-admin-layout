@@ -39,6 +39,7 @@
       :padding-top="contentPaddingTop"
       :padding-bottom="contentPaddingBottom"
       :padding-left="currentSiderWidth"
+      :overflow-hidden="addMainOverflowHidden"
     >
       <slot></slot>
     </layout-content>
@@ -77,6 +78,8 @@ interface Props {
   tabHeight?: number;
   /** 固定头部和标签 */
   fixedHeaderAndTab?: boolean;
+  /** 给主体添加禁止溢出 */
+  addMainOverflowHidden?: boolean;
   /** 底部可见 */
   footerVisible?: boolean;
   /** 底部高度 */
@@ -105,6 +108,7 @@ const props = withDefaults(defineProps<Props>(), {
   tabVisible: true,
   tabHeight: 44,
   fixedHeaderAndTab: true,
+  addMainOverflowHidden: false,
   footerVisible: true,
   footerHeight: 48,
   fixedFooter: true,
