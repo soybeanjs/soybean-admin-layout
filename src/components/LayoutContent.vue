@@ -1,5 +1,5 @@
 <template>
-  <main :style="style" class="soybean-admin-layout__main">
+  <main :style="style" class="admin-layout__content">
     <slot></slot>
   </main>
 </template>
@@ -7,6 +7,8 @@
 <script setup lang="ts">
 import { computed } from 'vue-demi';
 import { useCssRender } from '@/hooks';
+
+defineOptions({ name: 'LayoutContent' });
 
 interface Props {
   /** 顶部内边距 */
@@ -40,7 +42,7 @@ const style = computed(() => {
 });
 
 // css
-cssRender('.soybean-admin-layout__main', {
+cssRender('.admin-layout__content', {
   flexGrow: 1,
   boxSizing: 'border-box',
   width: '100%',

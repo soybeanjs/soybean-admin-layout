@@ -2,6 +2,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
+import DefineOptions from 'unplugin-vue-define-options/vite';
 import unocss from 'unocss/vite';
 
 export default defineConfig(configEnv => {
@@ -17,6 +18,7 @@ export default defineConfig(configEnv => {
     },
     plugins: [
       vue(),
+      DefineOptions(),
       unocss({ include: ['src/App.vue'] }),
       dts({
         include: ['./src/index.ts', './src/index.vue'],

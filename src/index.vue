@@ -1,5 +1,5 @@
 <template>
-  <div class="soybean-admin-layout" :style="{ minWidth: minWidth + 'px' }">
+  <div class="admin-layout" :style="{ minWidth: minWidth + 'px' }">
     <layout-header
       v-if="headerVisible"
       v-bind="commonProps"
@@ -62,6 +62,8 @@
 import { computed } from 'vue-demi';
 import { LayoutHeader, LayoutTab, LayoutSider, LayoutContent, LayoutFooter } from './components';
 import { useCssRender, useFixedTransformStyle } from './hooks';
+
+defineOptions({ name: 'AdminLayout' });
 
 interface Props {
   /** 布局模式 */
@@ -171,7 +173,7 @@ const contentPaddingTop = computed(() => {
 const contentPaddingBottom = computed(() => (props.fixedFooter && props.footerVisible ? props.footerHeight : 0));
 
 // css
-cssRender('.soybean-admin-layout', {
+cssRender('.admin-layout', {
   display: 'flex',
   flexDirection: 'column',
   width: '100%',

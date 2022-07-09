@@ -1,5 +1,5 @@
 <template>
-  <div class="soybean-admin-layout__tab" :style="style">
+  <div class="admin-layout__tab" :style="style">
     <slot></slot>
   </div>
 </template>
@@ -7,6 +7,8 @@
 <script setup lang="ts">
 import { computed } from 'vue-demi';
 import { useCssRender } from '@/hooks';
+
+defineOptions({ name: 'LayoutTab' });
 
 interface Props {
   /** 开启fixed布局 */
@@ -47,7 +49,7 @@ const style = computed(() => {
 });
 
 // css
-cssRender('.soybean-admin-layout__tab', {
+cssRender('.admin-layout__tab', {
   left: 0,
   flexShrink: 0,
   boxSizing: 'border-box',

@@ -1,5 +1,5 @@
 <template>
-  <footer class="soybean-admin-layout__footer" :style="style">
+  <footer class="admin-layout__footer" :style="style">
     <slot></slot>
   </footer>
 </template>
@@ -7,6 +7,8 @@
 <script setup lang="ts">
 import { computed } from 'vue-demi';
 import { useCssRender } from '@/hooks';
+
+defineOptions({ name: 'LayoutFooter' });
 
 interface Props {
   /** 开启fixed布局 */
@@ -44,7 +46,7 @@ const style = computed(() => {
 });
 
 // css
-cssRender('.soybean-admin-layout__footer', {
+cssRender('.admin-layout__footer', {
   left: 0,
   bottom: 0,
   flexShrink: 0,

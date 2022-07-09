@@ -1,5 +1,5 @@
 <template>
-  <header class="soybean-admin-layout__header" :style="style">
+  <header class="admin-layout__header" :style="style">
     <slot></slot>
   </header>
 </template>
@@ -7,6 +7,8 @@
 <script setup lang="ts">
 import { computed } from 'vue-demi';
 import { useCssRender } from '@/hooks';
+
+defineOptions({ name: 'LayoutHeader' });
 
 interface Props {
   /** 开启fixed布局 */
@@ -44,7 +46,7 @@ const style = computed(() => {
 });
 
 // css
-cssRender('.soybean-admin-layout__header', {
+cssRender('.admin-layout__header', {
   left: 0,
   top: 0,
   flexShrink: 0,

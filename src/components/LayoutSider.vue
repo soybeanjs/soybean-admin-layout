@@ -1,5 +1,5 @@
 <template>
-  <aside class="soybean-admin-layout__sider" :style="style">
+  <aside class="admin-layout__sider" :style="style">
     <slot></slot>
   </aside>
 </template>
@@ -7,6 +7,8 @@
 <script setup lang="ts">
 import { computed } from 'vue-demi';
 import { useCssRender } from '@/hooks';
+
+defineOptions({ name: 'LayoutSider' });
 
 interface Props {
   /** fixed布局的层级 */
@@ -37,7 +39,7 @@ const style = computed(() => {
 });
 
 // css
-cssRender('.soybean-admin-layout__sider', {
+cssRender('.admin-layout__sider', {
   position: 'fixed',
   left: 0,
   top: 0,
