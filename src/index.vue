@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-layout" :style="{ minWidth: minWidth + 'px' }">
+  <div class="admin-layout" :style="style">
     <layout-header
       v-if="headerVisible"
       v-bind="commonProps"
@@ -60,14 +60,17 @@
 
 <script setup lang="ts">
 import { computed } from 'vue-demi';
+import { CssRender } from 'css-render';
 import { LayoutHeader, LayoutTab, LayoutSider, LayoutContent, LayoutFooter } from './components';
-import { useCssRender, useFixedTransformStyle } from './hooks';
+import { useFixedTransformStyle } from './hooks';
 
 defineOptions({ name: 'AdminLayout' });
 
 interface Props {
   /** 布局模式 */
   mode?: 'vertical' | 'horizontal';
+  /** 是否启用最小宽度的布局 */
+  useMinWidthLayout?: boolean;
   /** 最小宽度 */
   minWidth?: number;
   /** 头部可见 */
@@ -80,7 +83,7 @@ interface Props {
   tabHeight?: number;
   /** 固定头部和标签 */
   fixedHeaderAndTab?: boolean;
-  /** 给主体添加禁止溢出 */
+  /** 给主体内容添加禁止溢出 */
   addMainOverflowHidden?: boolean;
   /** 底部可见 */
   footerVisible?: boolean;
@@ -104,6 +107,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   mode: 'vertical',
+  useMinWidthLayout: false,
   minWidth: 1200,
   headerVisible: true,
   headerHeight: 56,
@@ -122,10 +126,10 @@ const props = withDefaults(defineProps<Props>(), {
   transitionTimingFunction: 'ease-in-out'
 });
 
-const { cssRender } = useCssRender();
+const style = computed(() => (props.useMinWidthLayout ? `min-width:${props.minWidth}px;` : ''));
 
 // fixed布局时，应用translateX样式(水平方向出现滚动条，拖动滚动条时，fixed元素跟着滚动)
-const hasFixedEl = computed(() => props.fixedHeaderAndTab || props.fixedFooter);
+const hasFixedEl = computed(() => props.useMinWidthLayout && (props.fixedHeaderAndTab || props.fixedFooter));
 const transformStyle = useFixedTransformStyle(hasFixedEl);
 const headerAndTabTransform = computed(() => (props.fixedHeaderAndTab ? transformStyle.value : ''));
 const footerTransform = computed(() => (props.fixedFooter ? transformStyle.value : ''));
@@ -173,11 +177,14 @@ const contentPaddingTop = computed(() => {
 const contentPaddingBottom = computed(() => (props.fixedFooter && props.footerVisible ? props.footerHeight : 0));
 
 // css
-cssRender('.admin-layout', {
+const { c } = CssRender();
+const cStyle = c('.admin-layout', {
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
   height: '100%'
 });
+cStyle.render();
+cStyle.mount();
 </script>
 <style></style>

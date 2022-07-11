@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue-demi';
-import { useCssRender } from '@/hooks';
+import { CssRender } from 'css-render';
 
 defineOptions({ name: 'LayoutContent' });
 
@@ -33,20 +33,21 @@ const props = withDefaults(defineProps<Props>(), {
   transitionTimingFunction: 'ease-in-out'
 });
 
-const { cssRender } = useCssRender();
-
 const style = computed(() => {
   const { paddingTop, paddingBottom, paddingLeft, transitionDuration, transitionTimingFunction } = props;
-  const overflowStyle = `overflow: ${props.overflowHidden ? 'hidden' : 'visible'};`;
-  return `padding-top: ${paddingTop}px;padding-bottom: ${paddingBottom}px;padding-left: ${paddingLeft}px;${overflowStyle}transition-duration: ${transitionDuration}ms;transition-timing-function: ${transitionTimingFunction};`;
+  const overflowStyle = `overflow:${props.overflowHidden ? 'hidden' : 'visible'};`;
+  return `padding-top:${paddingTop}px;padding-bottom:${paddingBottom}px;padding-left:${paddingLeft}px;${overflowStyle}transition-duration:${transitionDuration}ms;transition-timing-function:${transitionTimingFunction};`;
 });
 
 // css
-cssRender('.admin-layout__content', {
+const { c } = CssRender();
+const cStyle = c('.admin-layout__content', {
   flexGrow: 1,
   boxSizing: 'border-box',
   width: '100%',
   transitionProperty: 'padding-left'
 });
+cStyle.render();
+cStyle.mount();
 </script>
 <style></style>

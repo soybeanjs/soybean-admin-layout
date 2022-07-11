@@ -10,6 +10,8 @@ AdminLayout.install = install;
 export interface LayoutProps {
   /** 布局模式 */
   mode?: 'vertical' | 'horizontal';
+  /** 是否启用最小宽度的布局 */
+  useMinWidthLayout?: boolean;
   /** 最小宽度 */
   minWidth?: number;
   /** 头部可见 */

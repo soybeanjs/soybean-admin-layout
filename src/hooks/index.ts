@@ -1,7 +1,5 @@
 import { ref, computed, watch, onUnmounted } from 'vue-demi';
 import type { Ref, ComputedRef } from 'vue-demi';
-import { CssRender } from 'css-render';
-import type { CNode, CSelector, CProperties, CNodeChildren } from 'css-render';
 
 /**
  * 使用了固定定位的布局元素添加translateX
@@ -10,6 +8,9 @@ import type { CNode, CSelector, CProperties, CNodeChildren } from 'css-render';
 export function useFixedTransformStyle(isFixed: Ref<boolean> | ComputedRef<boolean>) {
   const scrollLeft = ref(0);
   const transformStyle = computed(() => `transform: translateX(${-scrollLeft.value}px);`);
+
+  /** 是否初始化过 */
+  let isInit = false;
 
   function setScrollLeft(sLeft: number) {
     scrollLeft.value = sLeft;
@@ -27,12 +28,14 @@ export function useFixedTransformStyle(isFixed: Ref<boolean> | ComputedRef<boole
   }
 
   function removeScrollEventListener() {
+    if (!isInit) return;
     document.removeEventListener('scroll', scrollHandler);
   }
 
   function init() {
     initScrollLeft();
     addScrollEventListener();
+    isInit = true;
   }
 
   watch(
@@ -52,25 +55,4 @@ export function useFixedTransformStyle(isFixed: Ref<boolean> | ComputedRef<boole
   });
 
   return transformStyle;
-}
-
-/** 使用js渲染css */
-export function useCssRender() {
-  const { c } = CssRender();
-
-  let style: CNode;
-
-  function cssRender(selector: CSelector, props: CProperties, children: CNodeChildren = []) {
-    style = c(selector, props, children);
-    style.render();
-    style.mount();
-  }
-
-  onUnmounted(() => {
-    style?.unmount();
-  });
-
-  return {
-    cssRender
-  };
 }

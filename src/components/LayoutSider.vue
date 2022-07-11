@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue-demi';
-import { useCssRender } from '@/hooks';
+import { CssRender } from 'css-render';
 
 defineOptions({ name: 'LayoutSider' });
 
@@ -31,15 +31,14 @@ const props = withDefaults(defineProps<Props>(), {
   transitionTimingFunction: 'ease-in-out'
 });
 
-const { cssRender } = useCssRender();
-
 const style = computed(() => {
   const { zIndex, width, paddingTop, transitionDuration, transitionTimingFunction } = props;
-  return `z-index: ${zIndex};width: ${width}px;padding-top: ${paddingTop}px;transition-duration: ${transitionDuration}ms;transition-timing-function: ${transitionTimingFunction};`;
+  return `z-index:${zIndex};width:${width}px;padding-top:${paddingTop}px;transition-duration:${transitionDuration}ms;transition-timing-function:${transitionTimingFunction};`;
 });
 
 // css
-cssRender('.admin-layout__sider', {
+const { c } = CssRender();
+const cStyle = c('.admin-layout__sider', {
   position: 'fixed',
   left: 0,
   top: 0,
@@ -48,5 +47,7 @@ cssRender('.admin-layout__sider', {
   height: '100%',
   transitionProperty: 'all'
 });
+cStyle.render();
+cStyle.mount();
 </script>
 <style></style>
