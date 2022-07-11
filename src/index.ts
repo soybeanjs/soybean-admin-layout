@@ -10,6 +10,10 @@ AdminLayout.install = install;
 export interface LayoutProps {
   /** 布局模式 */
   mode?: 'vertical' | 'horizontal';
+  /** 是否是移动端 */
+  isMobile?: boolean;
+  /** 移动端时遮罩背景颜色 */
+  maskBg?: string;
   /** 是否启用最小宽度的布局 */
   useMinWidthLayout?: boolean;
   /** 最小宽度 */

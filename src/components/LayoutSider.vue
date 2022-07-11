@@ -25,6 +25,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   zIndex: 1002,
+  collapse: false,
   width: 200,
   paddingTop: 0,
   transitionDuration: 300,

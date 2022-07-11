@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/vue-admin-layout",
-  "version": "1.0.8",
+  "version": "1.1.1",
   "description": "a layout component of admin template, support vue2 and vue3",
   "private": false,
   "main": "./dist/index.umd.js",
