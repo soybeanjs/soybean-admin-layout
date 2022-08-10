@@ -29,4 +29,4 @@ import AdminLayout from '@soybeanjs/vue-admin-layout';
 import type { LayoutProps } from '@soybeanjs/vue-admin-layout';
 ```
 
-Online Example: https://soybean-admin-layout.vercel.app/
+Online Example: [https://soybean-admin-layout.vercel.app/](https://soybean-admin-layout.vercel.app/)

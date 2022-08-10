@@ -1,33 +1,17 @@
 {
   "name": "@soybeanjs/vue-admin-layout",
   "version": "1.1.1",
-  "description": "a layout component of admin template, support vue2 and vue3",
   "private": false,
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "dev": "vite",
-    "build": "npm run typecheck && vite build",
-    "build:vercel": "cross-env VITE_IS_VERCEL=1 vite build",
-    "typecheck": "vue-tsc --noEmit",
-    "release": "standard-version",
-    "pub": "npm publish --access=public",
-    "preview": "vite preview",
-    "lint": "eslint --fix ./ --ext .vue,.js,jsx,.ts,tsx",
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.{vue,js,jsx,ts,tsx}": "eslint --fix"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-customizable"
-    }
-  },
+  "description": "a layout component of admin template, support vue2 and vue3",
+  "author": "Soybean (honghuangdc@gmail.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/honghuangdc/soybean-admin-layout#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/honghuangdc/soybean-admin-layout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/honghuangdc/soybean-admin-layout/issues"
   },
   "keywords": [
     "admin",
@@ -36,21 +20,28 @@
     "vue2",
     "vue3"
   ],
-  "author": "Soybean (honghuangdc@gmail.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/honghuangdc/soybean-admin-layout/issues"
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run typecheck && vite build",
+    "build:vercel": "cross-env VITE_IS_VERCEL=1 vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "release": "standard-version",
+    "pub": "npm publish --access=public",
+    "preview": "vite preview",
+    "lint": "eslint . --fix",
+    "prepare": "husky install"
   },
-  "homepage": "https://github.com/honghuangdc/soybean-admin-layout#readme",
   "dependencies": {
-    "@unocss/reset": "^0.44.0",
-    "colord": "^2.9.2",
+    "@unocss/reset": "^0.45.5",
+    "colord": "^2.9.3",
     "css-render": "0.15.10",
-    "vue-demi": "^0.13.2"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "vue-demi": "^0.13.7"
   },
   "peerDependencies": {
     "@vue/composition-api": "^1.4.6",
@@ -61,36 +52,37 @@
       "optional": true
     }
   },
-  "files": [
-    "dist"
-  ],
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
-    "@vitejs/plugin-vue": "^2.3.3",
-    "@vue/eslint-config-prettier": "^7.0.0",
-    "@vue/eslint-config-typescript": "^11.0.0",
-    "commitizen": "^4.2.4",
+    "@soybeanjs/eslint-config": "^0.2.4",
+    "@vitejs/plugin-vue": "^3.0.1",
+    "commitizen": "^4.2.5",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
-    "cz-customizable": "^6.9.0",
-    "eslint": "^8.19.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vue": "^9.2.0",
+    "cz-customizable": "^6.9.1",
+    "eslint": "^8.21.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
     "typescript": "^4.7.4",
-    "unocss": "^0.44.0",
-    "unplugin-vue-define-options": "^0.6.2",
-    "vite": "2.9.14",
-    "vite-plugin-dts": "^1.2.1",
+    "unocss": "^0.45.5",
+    "unplugin-vue-define-options": "^0.7.3",
+    "vite": "3.0.5",
+    "vite-plugin-dts": "^1.4.1",
     "vue": "^3.2.37",
-    "vue-tsc": "^0.38.5"
+    "vue-tsc": "^0.40.0"
+  },
+  "lint-staged": {
+    "*.{vue,js,jsx,ts,tsx}": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

@@ -1,6 +1,6 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".",
+  "compilerOptions": {
+    "baseUrl": ".",
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["DOM", "ESNext"],
@@ -13,10 +13,10 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
-		"paths": {
-			"@/*": ["./src/*"],
-		},
-		"types": ["vite/client"]
-	},
-	"exclude": ["dist", "node_modules"],
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["vite/client"]
+  },
+  "exclude": ["dist", "node_modules"]
 }
