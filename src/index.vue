@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue-demi';
+import { computed } from 'vue';
 import { CssRender } from 'css-render';
 import { LayoutHeader, LayoutTab, LayoutSider, LayoutContent, LayoutFooter } from './components';
 import { useFixedTransformStyle } from './hooks';

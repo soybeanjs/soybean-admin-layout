@@ -1,45 +1,28 @@
-import { fileURLToPath } from 'url';
+import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import dts from 'vite-plugin-dts';
 import unocss from 'unocss/vite';
 
 export default defineConfig(configEnv => {
   const viteEnv = loadEnv(configEnv.mode, `.env.${configEnv.mode}`);
 
-  const isVercel = viteEnv.VITE_IS_VERCEL === '1';
+  const isLib = viteEnv.VITE_LIB_MODE === '1';
 
   return {
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
+        '@': path.resolve(process.cwd(), 'src')
       }
     },
-    plugins: [
-      vue(),
-      unocss({ include: ['src/App.vue'] }),
-      dts({
-        include: ['./src/index.ts', './src/index.vue'],
-        beforeWriteFile(filePath, content) {
-          return {
-            filePath: filePath.replace('/dist/src/', '/dist/'),
-            content
-          };
-        }
-      })
-    ],
-    optimizeDeps: {
-      exclude: ['vue-demi']
-    },
-    build: isVercel
+    plugins: [vue(), unocss({ include: ['src/App.vue'] })],
+    build: isLib
       ? {
-          brotliSize: false
-        }
-      : {
+          copyPublicDir: false,
           lib: {
-            entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
+            entry: path.resolve(process.cwd(), 'src/index.ts'),
             name: 'SoybeanAdminLayout',
-            fileName: 'index'
+            fileName: 'index',
+            formats: ['es', 'cjs']
           },
           rollupOptions: {
             external: ['vue'],
@@ -50,5 +33,6 @@ export default defineConfig(configEnv => {
             }
           }
         }
+      : {}
   };
 });

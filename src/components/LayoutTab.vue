@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { CssRender } from 'css-render';
-import { computed } from 'vue-demi';
+import { computed } from 'vue';
 
 defineOptions({ name: 'LayoutTab' });
 

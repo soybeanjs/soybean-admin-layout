@@ -20,28 +20,36 @@
     "vue2",
     "vue3"
   ],
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npm run typecheck && vite build",
+    "build": "npm-run-all typecheck vite:build",
     "build:vercel": "cross-env VITE_IS_VERCEL=1 vite build",
-    "typecheck": "vue-tsc --noEmit",
-    "release": "standard-version",
-    "pub": "npm publish --access=public",
+    "build:lib": "cross-env VITE_LIB_MODE=1 npm-run-all typecheck vite:build dts rollup-dts clean-dts",
+    "vite:build": "vite build",
+    "dts": "vue-tsc -p tsconfig.build.json",
+    "rollup-dts": "api-extractor run --local --verbose",
+    "clean-dts": "rm -rf ./lib",
     "preview": "vite preview",
     "lint": "eslint . --fix",
-    "prepare": "husky install"
+    "format": "soy prettier-format",
+    "commit": "soy git-commit",
+    "cleanup": "soy cleanup",
+    "update-pkg": "soy update-pkg",
+    "update-version": "bumpp --commit --push --tag",
+    "typecheck": "vue-tsc --noEmit",
+    "publish-pkg": "pnpm -r publish --access public",
+    "release": "pnpm update-version && pnpm build && pnpm publish-pkg"
   },
   "dependencies": {
-    "@unocss/reset": "^0.45.6",
+    "@unocss/reset": "^0.52.4",
     "colord": "^2.9.3",
-    "css-render": "0.15.10",
-    "vue-demi": "^0.13.7"
+    "css-render": "0.15.12"
   },
   "peerDependencies": {
     "@vue/composition-api": "^1.4.6",
@@ -53,23 +61,21 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
-    "@vitejs/plugin-vue": "^3.0.3",
-    "commitizen": "^4.2.5",
+    "@microsoft/api-extractor": "7.35.0",
+    "@types/node": "20.2.5",
+    "@soybeanjs/cli": "^0.3.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "bumpp": "9.1.0",
     "cross-env": "^7.0.3",
-    "cz-conventional-changelog": "^3.3.0",
-    "cz-customizable": "^6.9.1",
-    "eslint": "^8.22.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "typescript": "^4.7.4",
-    "unocss": "^0.45.6",
-    "vite": "3.0.7",
-    "vite-plugin-dts": "^1.4.1",
+    "npm-run-all": "4.1.5",
+    "eslint": "^8.41.0",
+    "eslint-config-soybeanjs": "^0.4.7",
+    "lint-staged": "^13.2.2",
+    "typescript": "^5.0.4",
+    "unocss": "^0.52.4",
+    "vite": "4.3.9",
     "vue": "^3.3.4",
-    "vue-tsc": "^0.40.1"
+    "vue-tsc": "^1.6.5"
   },
   "publishConfig": {
     "access": "public",

@@ -1,5 +1,5 @@
-import { ref, computed, watch, onUnmounted } from 'vue-demi';
-import type { Ref, ComputedRef } from 'vue-demi';
+import { ref, computed, watch, onUnmounted } from 'vue';
+import type { Ref, ComputedRef } from 'vue';
 
 export function useBoolean(initValue = false) {
   const bool = ref(initValue);

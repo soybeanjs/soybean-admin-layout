@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useBoolean } from '@/hooks';
-import AdminLayout from './index.vue';
+import AdminLayout from '../dist';
 
 type Mode = 'vertical' | 'horizontal';
 const mode = ref<Mode>('vertical');

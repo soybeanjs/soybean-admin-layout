@@ -1,4 +1,4 @@
-import type { App } from 'vue-demi';
+import type { App } from 'vue';
 import AdminLayout from './index.vue';
 
 function install(app: App) {
