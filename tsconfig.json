@@ -16,7 +16,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["vite/client", "unplugin-vue-define-options"]
+    "types": ["vite/client"]
   },
   "exclude": ["dist", "node_modules"]
 }

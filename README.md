@@ -1,32 +1,3 @@
 # @soybeanjs/vue-admin-layout
 
-this is an admin layout component.
-
-## install
-
-### npm
-
-```bash
-npm install @soybeanjs/vue-admin-layout
-```
-
-### yarn
-
-```bash
-yarn add @soybeanjs/vue-admin-layout
-```
-
-### pnpm
-
-```bash
-pnpm install @soybeanjs/vue-admin-layout
-```
-
-## usage
-
-```typescript
-import AdminLayout from '@soybeanjs/vue-admin-layout';
-import type { LayoutProps } from '@soybeanjs/vue-admin-layout';
-```
-
-Online Example: [https://soybean-admin-layout.vercel.app/](https://soybean-admin-layout.vercel.app/)
+该包已经废弃，请使用 [@soybeanjs/materials](https://github.com/soybeanjs/materials/blob/main/packages/vue/README.md) 替换
